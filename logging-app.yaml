@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: sample-logger
+  labels:
+    app: sample-logger
+spec:
+  selector:
+    matchLabels:
+      app: sample-logger
+  minReadySeconds: 5
+  progressDeadlineSeconds: 120
+  replicas: 1 #TODO - adjust this to your own requirements
+  template:
+    metadata:
+      labels:
+        app: sample-logger
+    spec:
+      containers:
+      - image: sample-logger:1
+        name: sample
